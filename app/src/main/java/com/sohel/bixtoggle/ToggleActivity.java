@@ -4,9 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.hardware.camera2.CameraManager;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -27,10 +25,10 @@ public class ToggleActivity extends Activity {
 
     private void toggle() {
         SharedPreferences prefs = getSharedPreferences(getString(R.string.app_prefs), MODE_PRIVATE);
-        int primary_action = prefs.getInt("primary_action", 0);
-//        String primary_options[] = getResources().getStringArray(R.array.primary_options);
-        if (primary_action == 0) this.toggleRingerMode();
-        else if (primary_action == 1) this.toggleMediaVolume();
+        int primaryAction = prefs.getInt("primary_action", 0);
+//        String primaryOptions[] = getResources().getStringArray(R.array.primary_options);
+        if (primaryAction == 0) this.toggleRingerMode();
+        else if (primaryAction == 1) this.toggleMediaMute();
         else this.toggleRingerMode();
 //        this.toggleFlashlight();
     }
@@ -44,6 +42,9 @@ public class ToggleActivity extends Activity {
         Toast.makeText(ToggleActivity.this, msg, Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * @TODO need to get flashlight state in order to implement this.
+     */
     private void toggleFlashlight() {
         final boolean hasFlash = getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
         boolean flashPerm = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
@@ -58,15 +59,21 @@ public class ToggleActivity extends Activity {
         }
     }
 
-    private void toggleMediaVolume() {
+    private void toggleMediaMute() {
         AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         if (audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) > 0) {
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_PLAY_SOUND);
+            int volumeNow = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+            SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.app_prefs), MODE_PRIVATE).edit();
+            editor.putInt("media_volume_previous", volumeNow);
+            editor.apply();
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_SHOW_UI);
             Toast.makeText(ToggleActivity.this, "Muted", Toast.LENGTH_LONG).show();
         } else {
             int max = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, max / 2, AudioManager.FLAG_PLAY_SOUND);
-            Toast.makeText(ToggleActivity.this, "Unmuted", Toast.LENGTH_LONG).show();
+            SharedPreferences prefs = getSharedPreferences(getString(R.string.app_prefs), MODE_PRIVATE);
+            int volumePrevious = prefs.getInt("media_volume_previous", max / 2);
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volumePrevious, AudioManager.FLAG_SHOW_UI);
+            Toast.makeText(ToggleActivity.this, "Un-muted", Toast.LENGTH_LONG).show();
         }
     }
 

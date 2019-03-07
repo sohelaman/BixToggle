@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">BixToggle</string>
     <string name="options_app_name">BixToggle Options</string>
-    <string name="options_textview_label">Choose toggle action</string>
+    <string name="options_textview_label">Toggle action</string>
     <string name="button_save">Save</string>
     <string name="app_prefs">BixToggle_Prefs</string>
     <string-array name="primary_options">
         <!--<item>Prompt</item>-->
-        <item>Ringer Toggle</item>
-        <item>Mute/Unmute</item>
+        <item>Toggle Ringer</item>
+        <item>Mute/Unmute Media</item>
         <!--<item>Flashlight Toggle</item>-->
     </string-array>
 </resources>

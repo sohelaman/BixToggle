@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST);
 
         SharedPreferences prefs = getSharedPreferences(getString(R.string.app_prefs), MODE_PRIVATE);
-        int primary_option = prefs.getInt("primary_action", 0);
+        int primaryAction = prefs.getInt("primary_action", 0);
         final Spinner spinner = (Spinner) findViewById(R.id.spinner2);
-        spinner.setSelection(primary_option);
+        spinner.setSelection(primaryAction);
         // final TextView textView = (TextView) findViewById(R.id.textView);
         // textView.setText(primary_option);
     }
