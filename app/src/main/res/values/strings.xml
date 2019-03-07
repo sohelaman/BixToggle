@@ -4,7 +4,7 @@
     <string name="options_textview_label">Toggle action</string>
     <string name="button_save">Save</string>
     <string name="app_prefs">BixToggle_Prefs</string>
-    <string-array name="primary_options">
+    <string-array name="toggle_actions">
         <!--<item>Prompt</item>-->
         <item>Toggle Ringer</item>
         <item>Mute/Unmute Media</item>

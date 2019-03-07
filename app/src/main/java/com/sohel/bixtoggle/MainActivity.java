@@ -11,20 +11,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int CAMERA_REQUEST = 50;
+//    private static final int CAMERA_REQUEST = 50;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST);
+//        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST);
 
         SharedPreferences prefs = getSharedPreferences(getString(R.string.app_prefs), MODE_PRIVATE);
-        int primaryAction = prefs.getInt("primary_action", 0);
+        int toggleAction = prefs.getInt("toggle_action", 0);
         final Spinner spinner = (Spinner) findViewById(R.id.spinner2);
-        spinner.setSelection(primaryAction);
-        // final TextView textView = (TextView) findViewById(R.id.textView);
-        // textView.setText(primary_option);
+        spinner.setSelection(toggleAction);
+//         final TextView textView = (TextView) findViewById(R.id.textView);
+//         textView.setText(toggleAction);
     }
 
     /*@Override
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.app_prefs), MODE_PRIVATE).edit();
         final Spinner spinner = (Spinner) findViewById(R.id.spinner2);
         int selection = spinner.getSelectedItemPosition();
-        editor.putInt("primary_action", selection);
+        editor.putInt("toggle_action", selection);
         editor.apply();
         Toast.makeText(this, "Saved", Toast.LENGTH_LONG).show();
     }

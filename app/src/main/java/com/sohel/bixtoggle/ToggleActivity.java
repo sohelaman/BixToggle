@@ -25,10 +25,10 @@ public class ToggleActivity extends Activity {
 
     private void toggle() {
         SharedPreferences prefs = getSharedPreferences(getString(R.string.app_prefs), MODE_PRIVATE);
-        int primaryAction = prefs.getInt("primary_action", 0);
-//        String primaryOptions[] = getResources().getStringArray(R.array.primary_options);
-        if (primaryAction == 0) this.toggleRingerMode();
-        else if (primaryAction == 1) this.toggleMediaMute();
+        int toggleAction = prefs.getInt("toggle_action", 0);
+//        String toggleActions[] = getResources().getStringArray(R.array.toggle_actions);
+        if (toggleAction == 0) this.toggleRingerMode();
+        else if (toggleAction == 1) this.toggleMediaMute();
         else this.toggleRingerMode();
 //        this.toggleFlashlight();
     }
