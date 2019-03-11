@@ -1,3 +1,3 @@
 # BixToggle
-A simple application that toggles audio between profiles.
-Specifically intended to be assigned to the Bixby button after the One UI update of the Samsung Galaxy phones.
+A simple application that toggles between audio profiles (Vibrate/Normal).
+Intended for the Bixby button action of the Samsung Galaxy phones with One UI.
