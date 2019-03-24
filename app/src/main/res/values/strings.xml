@@ -9,5 +9,6 @@
         <item>Toggle Ringer</item>
         <item>Mute/Unmute Media</item>
         <!--<item>Flashlight Toggle</item>-->
+        <item>Voice Assistant</item>
     </string-array>
 </resources>

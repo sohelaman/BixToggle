@@ -3,6 +3,7 @@ package com.sohel.bixtoggle;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraManager;
@@ -29,8 +30,15 @@ public class ToggleActivity extends Activity {
 //        String toggleActions[] = getResources().getStringArray(R.array.toggle_actions);
         if (toggleAction == 0) this.toggleRingerMode();
         else if (toggleAction == 1) this.toggleMediaMute();
+        else if (toggleAction == 2) this.startVoiceAssistant();
         else this.toggleRingerMode();
 //        this.toggleFlashlight();
+    }
+
+    private void startVoiceAssistant() {
+        Intent intent = new Intent(Intent.ACTION_VOICE_COMMAND);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     private void toggleRingerMode() {
