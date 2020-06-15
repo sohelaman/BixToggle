@@ -2,7 +2,7 @@
     <string name="app_name">BixToggle</string>
     <string name="options_activity_name">BixToggle Settings</string>
     <string name="options_textview_label">Action</string>
-    <string name="button_save">Save</string>
+    <string name="button_save">Set Action</string>
     <string name="app_prefs">BixToggle_Prefs</string>
     <string-array name="toggle_actions">
         <item>Ringer toggle</item>
