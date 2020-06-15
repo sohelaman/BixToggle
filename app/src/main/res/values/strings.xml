@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">BixToggle</string>
-    <string name="options_app_name">BixToggle Options</string>
-    <string name="options_textview_label">Toggle action</string>
+    <string name="options_activity_name">BixToggle Settings</string>
+    <string name="options_textview_label">Action</string>
     <string name="button_save">Save</string>
     <string name="app_prefs">BixToggle_Prefs</string>
     <string-array name="toggle_actions">
-        <!--<item>Prompt</item>-->
-        <item>Toggle Ringer</item>
-        <item>Mute/Unmute Media</item>
-        <!--<item>Flashlight Toggle</item>-->
-        <item>Voice Assistant</item>
+        <item>Ringer toggle</item>
+        <item>Mute/unmute media</item>
+        <item>Start assistant</item>
+        <item>Brightness toggle</item>
+        <item>Torch</item>
     </string-array>
 </resources>
