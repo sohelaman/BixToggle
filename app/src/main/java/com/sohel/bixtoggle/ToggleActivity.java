@@ -33,6 +33,16 @@ public class ToggleActivity extends Activity {
     private void toggle() {
         SharedPreferences prefs = getSharedPreferences(getString(R.string.app_prefs), MODE_PRIVATE);
         // String toggleActions[] = getResources().getStringArray(R.array.toggle_actions);
+
+        int firstRunDone = prefs.getInt("first_run_done", 0);
+        if (firstRunDone == 0) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.help_link_url)));
+            startActivity(browserIntent);
+            SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.app_prefs), MODE_PRIVATE).edit();
+            editor.putInt("first_run_done", 1).apply();
+            return;
+        }
+
         int toggleAction = prefs.getInt("toggle_action", 0); // in order of @strings/toggle_actions items.
         if (toggleAction == 0) this.toggleRingerMode();
         else if (toggleAction == 1) this.toggleMediaMute();
